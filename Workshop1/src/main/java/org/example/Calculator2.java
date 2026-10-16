@@ -21,7 +21,7 @@ public class Calculator2 {
         int totalDays = daysPerYear * years;
 
         double futureValue =
-                principal * Math.pow(1 + (rate / daysPerYear), totalDays);
+                principal * Math.pow (1 + (rate / daysPerYear), totalDays);
 
         double interestEarned = futureValue - principal;
 

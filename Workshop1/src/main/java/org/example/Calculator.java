@@ -5,13 +5,13 @@ public class Calculator {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Enter the loan principal: ");
+        System.out.println("Enter the loan principal: ");
         double principal = input.nextDouble();
 
-        System.out.print("Enter the annual interest rate (%): ");
+        System.out.println("Enter the annual interest rate (%): ");
         double annualRate = input.nextDouble();
 
-        System.out.print("Enter the loan length in years: ");
+        System.out.println("Enter the loan length in years: ");
         int years = input.nextInt();
 
         double monthlyRate = (annualRate / 100) / 12;
