@@ -20,7 +20,7 @@ public class Main {
     static final String BOLD = "\033[1m";
 
     static final String LINE =
-            "================================================";
+
 
     public static void main(String[] args) {
 
