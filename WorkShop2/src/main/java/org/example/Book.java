@@ -1,12 +1,14 @@
 package org.example;
-
+// This file is the Model that carries the properties of the project.
+//It is like the backbone of the project(Your backbone is your Spinal cord that enable movement)
 public class Book {
+//    Properties
     private int id;
     private String isbn;
     private String title;
     private boolean isCheckedOut;
     private String checkedOutTo;
-
+// Constructor
     public Book(int id, String isbn, String title) {
         this.id = id;
         this.isbn = isbn;
@@ -14,6 +16,8 @@ public class Book {
         this.isCheckedOut = false;
         this.checkedOutTo = "";
     }
+
+//    Getters & Setters
     public int getId() {
         return id;
     }
@@ -46,6 +50,7 @@ public class Book {
         checkedOutTo = "";
         System.out.println("Book checked in sucessfully");
        }
+//       Override String method
         @Override
         public String toString() {
             return String.format("%d | %s| %s", id, isbn, title);

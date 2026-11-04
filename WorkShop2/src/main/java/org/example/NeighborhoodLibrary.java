@@ -1,10 +1,17 @@
 package org.example;
 
 import java.util.Scanner;
-
+// This file contains all the methods that will be working alongside with
+// the model to make the project work as needed.
 public class NeighborhoodLibrary {
     static Scanner scanner = new Scanner(System.in);
 
+//    Creating a list of books
+//    Instantiating the Book class
+//    C => Create
+//    R => Read
+//    U => Update
+//    D => Delete
     static Book[] books = {
                 new Book(1, "9780140449136", "The Odyssey"),
                 new Book(2, "9780743273565", "The Great Gatsby"),
@@ -28,10 +35,12 @@ public class NeighborhoodLibrary {
                 new Book(20, "9780307949486", "The Book Thief")
     };
 
+//    Start Method
     public static void start() {
 
         boolean running = true;
 
+//        We use the while loop to iterate through the Home screen Menu
         while (running) {
 
             displayHomeScreen();
@@ -60,17 +69,16 @@ public class NeighborhoodLibrary {
 
     }
 
-
+//   Display Home Screen Method
   public static void displayHomeScreen() {
-
       System.out.println("NEIGHBORHOOD LIBRARY");
       System.out.println("1 Show available books");
       System.out.println("2 Show Checked out books");
       System.out.println("3 Exit");
       System.out.println("Choose an option:");
-
   }
 
+//  Show available books method
     public static void showAvailableBooks() {
         System.out.println("\nAVAILIABLE Books");
 
@@ -120,7 +128,7 @@ public class NeighborhoodLibrary {
         System.out.println("please enter a valid number");
     }
   }
-
+//  show CheckedOut Books method
 public static void showCheckedOutBooks() {
 
     System.out.println("\nCHECKED OUT BOOKS");
@@ -151,6 +159,7 @@ public static void showCheckedOutBooks() {
     }
 }
 
+//     Show checkInBook
 public static void checkInBook () {
     System.out.println("Enter Book ID: ");
 
@@ -170,6 +179,7 @@ public static void checkInBook () {
     }
 }
 
+//     find BookById
 public static Book findBookById(int id) {
 
     for (Book book : books) {
