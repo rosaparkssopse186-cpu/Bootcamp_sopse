@@ -1,4 +1,5 @@
 
+
 package org.example;
 
 import java.time.LocalDate;
@@ -10,17 +11,33 @@ public class Main {
 
     static Scanner scanner = new Scanner(System.in);
 
-    // Terminal colors
-    static final String RESET = "\033[0m";
-    static final String GOLD = "\033[38;5;220m";
-    static final String WHITE = "\033[97m";
-    static final String GREEN = "\033[92m";
-    static final String RED = "\033[91m";
-    static final String GRAY = "\033[90m";
-    static final String BOLD = "\033[1m";
+    // =====================================
+    // LUXURY TERMINAL COLOR PALETTE
+    // =====================================
+
+    static final String RESET = "\u001B[0m";
+    static final String BOLD = "\u001B[1m";
+
+    // Champagne Gold
+    static final String GOLD = "\u001B[38;2;214;182;107m";
+
+    // Soft Ivory
+    static final String WHITE = "\u001B[38;2;245;240;230m";
+
+    // Sage Green
+    static final String GREEN = "\u001B[38;2;143;175;145m";
+
+    // Dusty Blue
+    static final String BLUE = "\u001B[38;2;169;184;200m";
+
+    // Warm Gray
+    static final String GRAY = "\u001B[38;2;119;119;119m";
+
+    // Soft Amber for warnings and errors
+    static final String AMBER = "\u001B[38;2;222;184;105m";
 
     static final String LINE =
-
+            "================================================";
 
     public static void main(String[] args) {
 
@@ -60,9 +77,9 @@ public class Main {
         scanner.close();
     }
 
-    // ==============================
+    // =====================================
     // HOME SCREEN
-    // ==============================
+    // =====================================
 
     public static void displayHomeScreen() {
 
@@ -70,40 +87,51 @@ public class Main {
 
         System.out.println(GOLD + BOLD);
         System.out.println(LINE);
-        System.out.println("              FINANCE TRACKER");
-        System.out.println("       PERSONAL FINANCIAL MANAGEMENT");
+        System.out.println("                 FINANCE TRACKER");
+        System.out.println("          PERSONAL FINANCIAL MANAGEMENT");
         System.out.println(LINE + RESET);
 
         System.out.println();
+
         System.out.println(WHITE + BOLD +
-                "                 WELCOME HOME" + RESET);
-
-        System.out.println();
-        System.out.println(GOLD + "                 MAIN MENU" + RESET);
+                "                  WELCOME HOME" + RESET);
 
         System.out.println();
 
-        System.out.println(GREEN + "          [D]  Add Deposit" + RESET);
-        System.out.println();
-
-        System.out.println(RED + "          [P]  Make Payment" + RESET);
-        System.out.println();
-
-        System.out.println(GOLD + "          [L]  View Ledger" + RESET);
-        System.out.println();
-
-        System.out.println(WHITE + "          [X]  Exit Application" + RESET);
+        System.out.println(GOLD + BOLD +
+                "                    MAIN MENU" + RESET);
 
         System.out.println();
+
+        System.out.println(GREEN +
+                "              [D]  Add Deposit" + RESET);
+
+        System.out.println();
+
+        System.out.println(BLUE +
+                "              [P]  Make Payment" + RESET);
+
+        System.out.println();
+
+        System.out.println(GOLD +
+                "              [L]  View Ledger" + RESET);
+
+        System.out.println();
+
+        System.out.println(WHITE +
+                "              [X]  Exit Application" + RESET);
+
+        System.out.println();
+
         displayFooter();
 
-        System.out.print(GOLD +
-                "       Select an option: " + RESET);
+        System.out.print(GOLD + BOLD +
+                "          Select an option: " + RESET);
     }
 
-    // ==============================
+    // =====================================
     // ADD DEPOSIT
-    // ==============================
+    // =====================================
 
     public static void addDeposit() {
 
@@ -112,15 +140,16 @@ public class Main {
         displayHeader("ADD DEPOSIT");
 
         System.out.println();
-        System.out.println(WHITE +
-                "       Enter Your Deposit Details" + RESET);
+
+        System.out.println(GREEN + BOLD +
+                "          ENTER YOUR DEPOSIT DETAILS" + RESET);
 
         System.out.println();
 
-        System.out.print(GOLD + "       Description : " + RESET);
+        System.out.print(GOLD + "          Description : " + RESET);
         String description = scanner.nextLine();
 
-        System.out.print(GOLD + "       Vendor      : " + RESET);
+        System.out.print(GOLD + "          Vendor      : " + RESET);
         String vendor = scanner.nextLine();
 
         double amount = getAmount();
@@ -143,19 +172,19 @@ public class Main {
         System.out.println();
 
         System.out.println(GREEN + BOLD +
-                "       DEPOSIT SAVED SUCCESSFULLY!" + RESET);
+                "          DEPOSIT SAVED SUCCESSFULLY!" + RESET);
 
         System.out.printf(GREEN +
-                "       Amount Added: $%.2f%n" + RESET, amount);
+                "          Amount Added: $%.2f%n" + RESET, amount);
 
         displayFooter();
 
         pauseScreen();
     }
 
-    // ==============================
+    // =====================================
     // MAKE PAYMENT
-    // ==============================
+    // =====================================
 
     public static void addPayment() {
 
@@ -164,15 +193,16 @@ public class Main {
         displayHeader("MAKE PAYMENT");
 
         System.out.println();
-        System.out.println(WHITE +
-                "       Enter Your Payment Details" + RESET);
+
+        System.out.println(BLUE + BOLD +
+                "          ENTER YOUR PAYMENT DETAILS" + RESET);
 
         System.out.println();
 
-        System.out.print(GOLD + "       Description : " + RESET);
+        System.out.print(GOLD + "          Description : " + RESET);
         String description = scanner.nextLine();
 
-        System.out.print(GOLD + "       Vendor      : " + RESET);
+        System.out.print(GOLD + "          Vendor      : " + RESET);
         String vendor = scanner.nextLine();
 
         double amount = getAmount();
@@ -194,20 +224,20 @@ public class Main {
 
         System.out.println();
 
-        System.out.println(RED + BOLD +
-                "       PAYMENT RECORDED SUCCESSFULLY!" + RESET);
+        System.out.println(BLUE + BOLD +
+                "          PAYMENT RECORDED SUCCESSFULLY!" + RESET);
 
-        System.out.printf(RED +
-                "       Amount Paid: $%.2f%n" + RESET, amount);
+        System.out.printf(BLUE +
+                "          Amount Paid: $%.2f%n" + RESET, amount);
 
         displayFooter();
 
         pauseScreen();
     }
 
-    // ==============================
+    // =====================================
     // LEDGER SCREEN
-    // ==============================
+    // =====================================
 
     public static void showLedger() {
 
@@ -225,39 +255,39 @@ public class Main {
             System.out.println();
 
             System.out.println(GOLD + BOLD +
-                    "       TRANSACTION MENU" + RESET);
+                    "          TRANSACTION MENU" + RESET);
 
             System.out.println();
 
             System.out.println(WHITE +
-                    "       [A]  All Transactions" + RESET);
+                    "          [A]  All Transactions" + RESET);
 
             System.out.println();
 
             System.out.println(GREEN +
-                    "       [D]  Deposits Only" + RESET);
+                    "          [D]  Deposits Only" + RESET);
 
             System.out.println();
 
-            System.out.println(RED +
-                    "       [P]  Payments Only" + RESET);
+            System.out.println(BLUE +
+                    "          [P]  Payments Only" + RESET);
 
             System.out.println();
 
             System.out.println(GOLD +
-                    "       [R]  Financial Reports" + RESET);
+                    "          [R]  Financial Reports" + RESET);
 
             System.out.println();
 
             System.out.println(WHITE +
-                    "       [H]  Return Home" + RESET);
+                    "          [H]  Return Home" + RESET);
 
             System.out.println();
 
             displayFooter();
 
-            System.out.print(GOLD +
-                    "       Select an option: " + RESET);
+            System.out.print(GOLD + BOLD +
+                    "          Select an option: " + RESET);
 
             String choice = scanner.nextLine()
                     .trim().toUpperCase();
@@ -299,9 +329,9 @@ public class Main {
         }
     }
 
-    // ==============================
-    // REPORTS SCREEN
-    // ==============================
+    // =====================================
+    // FINANCIAL REPORTS SCREEN
+    // =====================================
 
     public static void showReports(
             ArrayList<Transaction> transactions) {
@@ -317,49 +347,49 @@ public class Main {
             System.out.println();
 
             System.out.println(GOLD + BOLD +
-                    "       ANALYZE YOUR FINANCES" + RESET);
+                    "          ANALYZE YOUR FINANCES" + RESET);
 
             System.out.println();
 
             System.out.println(WHITE +
-                    "       [1]  Month To Date" + RESET);
+                    "          [1]  Month To Date" + RESET);
 
             System.out.println();
 
             System.out.println(WHITE +
-                    "       [2]  Previous Month" + RESET);
+                    "          [2]  Previous Month" + RESET);
 
             System.out.println();
 
             System.out.println(WHITE +
-                    "       [3]  Year To Date" + RESET);
+                    "          [3]  Year To Date" + RESET);
 
             System.out.println();
 
             System.out.println(WHITE +
-                    "       [4]  Previous Year" + RESET);
+                    "          [4]  Previous Year" + RESET);
 
             System.out.println();
 
-            System.out.println(WHITE +
-                    "       [5]  Search Vendor" + RESET);
+            System.out.println(BLUE +
+                    "          [5]  Search Vendor" + RESET);
 
             System.out.println();
 
             System.out.println(GREEN +
-                    "       [6]  Account Summary" + RESET);
+                    "          [6]  Account Summary" + RESET);
 
             System.out.println();
 
-            System.out.println(RED +
-                    "       [0]  Back to Ledger" + RESET);
+            System.out.println(GOLD +
+                    "          [0]  Back to Ledger" + RESET);
 
             System.out.println();
 
             displayFooter();
 
-            System.out.print(GOLD +
-                    "       Select an option: " + RESET);
+            System.out.print(GOLD + BOLD +
+                    "          Select an option: " + RESET);
 
             String choice = scanner.nextLine().trim();
 
@@ -417,17 +447,20 @@ public class Main {
         }
     }
 
-    // ==============================
+    // =====================================
     // REUSABLE DISPLAY METHODS
-    // ==============================
+    // =====================================
 
     public static void displayHeader(String title) {
 
         System.out.println(GOLD + BOLD);
         System.out.println(LINE);
-        System.out.println("              FINANCE TRACKER");
+        System.out.println("                 FINANCE TRACKER");
         System.out.println(LINE);
-        System.out.println(WHITE + "               " + title + RESET);
+
+        System.out.println(WHITE + BOLD +
+                "                 " + title + RESET);
+
         System.out.println(GOLD + LINE + RESET);
     }
 
@@ -436,21 +469,21 @@ public class Main {
         System.out.println(GOLD + LINE + RESET);
 
         System.out.println(GRAY +
-                "        YOUR MONEY. YOUR CONTROL." + RESET);
+                "             YOUR MONEY. YOUR CONTROL." + RESET);
 
         System.out.println(GOLD + LINE + RESET);
     }
 
-    // ==============================
+    // =====================================
     // AMOUNT VALIDATION
-    // ==============================
+    // =====================================
 
     public static double getAmount() {
 
         while (true) {
 
             System.out.print(GOLD +
-                    "       Amount      : $" + RESET);
+                    "          Amount      : $" + RESET);
 
             try {
 
@@ -470,23 +503,23 @@ public class Main {
         }
     }
 
-    // ==============================
+    // =====================================
     // ERROR MESSAGE
-    // ==============================
+    // =====================================
 
     public static void showError(String message) {
 
         System.out.println();
 
-        System.out.println(RED + BOLD +
-                "       ERROR: " + message + RESET);
+        System.out.println(AMBER + BOLD +
+                "          NOTICE: " + message + RESET);
 
         System.out.println();
     }
 
-    // ==============================
+    // =====================================
     // CLEAR SCREEN
-    // ==============================
+    // =====================================
 
     public static void clearScreen() {
 
@@ -494,23 +527,23 @@ public class Main {
         System.out.flush();
     }
 
-    // ==============================
+    // =====================================
     // PAUSE SCREEN
-    // ==============================
+    // =====================================
 
     public static void pauseScreen() {
 
         System.out.println();
 
         System.out.print(GOLD +
-                "       Press ENTER to continue..." + RESET);
+                "          Press ENTER to continue..." + RESET);
 
         scanner.nextLine();
     }
 
-    // ==============================
+    // =====================================
     // EXIT SCREEN
-    // ==============================
+    // =====================================
 
     public static void displayExitScreen() {
 
@@ -518,14 +551,29 @@ public class Main {
 
         System.out.println(GOLD + BOLD);
         System.out.println(LINE);
+
         System.out.println();
-        System.out.println("             FINANCE TRACKER");
+
+        System.out.println("                 FINANCE TRACKER");
+
         System.out.println();
-        System.out.println("       THANK YOU FOR USING OUR APP!");
+
+        System.out.println(WHITE +
+                "          THANK YOU FOR USING OUR APP!");
+
         System.out.println();
-        System.out.println("          HAVE A GREAT DAY!");
+
+        System.out.println(GREEN +
+                "                HAVE A GREAT DAY!");
+
         System.out.println();
+
         System.out.println(LINE + RESET);
+
+        System.out.println();
+
+        System.out.println(GRAY +
+                "             YOUR MONEY. YOUR CONTROL." + RESET);
 
         System.out.println();
     }
