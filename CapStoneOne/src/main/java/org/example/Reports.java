@@ -20,8 +20,8 @@ public class Reports {
                             today.getYear()) {
 
                 System.out.println(transaction);
-            }
-        }
+            }        }
+
     }
 
     public static void previousMonth(
