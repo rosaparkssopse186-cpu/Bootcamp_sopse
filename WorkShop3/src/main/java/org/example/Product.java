@@ -32,6 +32,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return sku + " | " + name + " | $" + price + " | " + department;
+        return sku + " | " + name + " | $" +
+                String.format("%.2f", price) + " | " + department;
     }
 }

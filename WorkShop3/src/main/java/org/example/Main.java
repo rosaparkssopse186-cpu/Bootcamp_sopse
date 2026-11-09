@@ -1,6 +1,5 @@
 package org.example;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,14 +8,16 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+
         List<Product> products = FileManager.readProduct();
-        List<Product> cart = new ArrayList<>();
+
+        ShoppingCart shoppingCart = new ShoppingCart();
 
         int choice;
 
         do {
 
-            System.out.println("\nONLINE STORE");
+            System.out.println("\n========== ONLINE STORE ==========");
             System.out.println("1. Display Products");
             System.out.println("2. Display Cart");
             System.out.println("0. Exit");
@@ -28,28 +29,28 @@ public class Main {
 
                 case 1:
 
-                    System.out.println("\nAVAILABLE PRODUCTS");
+                    System.out.println("\n========== AVAILABLE PRODUCTS ==========");
 
-                    for (Product product : products) {
-                        System.out.printf("|%s|%s|%.2f|%s%n",
-                                product.getSku(),
-                                product.getName(),
-                                product.getPrice(),
-                                product.getDepartment());
+                    showAllProducts(products);
+
+                    if (products.isEmpty()) {
+                        System.out.println("No products available.");
+                        break;
                     }
 
                     System.out.print("\nEnter SKU to add to cart: ");
+
                     String sku = scanner.next();
 
-                    Product selected = selectProductBySku(sku);
+                    Product selected = selectProductBySku(sku, products);
 
                     if (selected != null) {
 
-                        cart.add(selected);
+                        shoppingCart.addToCart(selected);
 
                         System.out.println(
-                                selected.getSku() +
-                                        " added to cart.");
+                                selected.getName() + " added to cart."
+                        );
 
                     } else {
 
@@ -60,36 +61,36 @@ public class Main {
 
                 case 2:
 
-                    System.out.println("\nSHOPPING CART");
+                    System.out.println("\n========== SHOPPING CART ==========");
 
-                    if (cart.isEmpty()) {
+                    shoppingCart.displayCart();
 
-                        System.out.println("Cart is empty.");
-
-                    } else {
-
-                        for (Product product : cart) {
-                            System.out.println(product);
-                        }
+                    if (!shoppingCart.getCart().isEmpty()) {
 
                         System.out.print(
-                                "\nEnter SKU to remove or type NONE: ");
+                                "\nEnter SKU to remove or type NONE: "
+                        );
 
                         String removeSku = scanner.next();
 
                         if (!removeSku.equalsIgnoreCase("NONE")) {
 
-                            Product removeProduct =
-                                    selectProductBySku(removeSku);
+                            Product removeProduct = selectProductBySku(
+                                    removeSku,
+                                    shoppingCart.getCart()
+                            );
 
                             if (removeProduct != null) {
 
-                                cart.remove(removeProduct);
+                                shoppingCart.removeFromCart(removeProduct);
 
                                 System.out.println("Product removed.");
+
                             } else {
 
-                                System.out.println("Product not found.");
+                                System.out.println(
+                                        "Product not found in cart."
+                                );
                             }
                         }
                     }
@@ -98,12 +99,13 @@ public class Main {
 
                 case 0:
 
-                    System.out.println("Goodbye!");
+                    System.out.println("Thank you for shopping. Goodbye!");
+
                     break;
 
                 default:
 
-                    System.out.println("Invalid Option");
+                    System.out.println("Invalid option. Please try again.");
             }
 
         } while (choice != 0);
@@ -111,9 +113,8 @@ public class Main {
         scanner.close();
     }
 
-    public static Product selectProductBySku(String sku) {
-
-        List<Product> products = FileManager.readProduct();
+    public static Product selectProductBySku(
+            String sku, List<Product> products) {
 
         for (Product product : products) {
 
@@ -125,11 +126,7 @@ public class Main {
         return null;
     }
 
-    public static void showAllProducts() {
-
-        System.out.println("\nAVAILABLE PRODUCTS");
-
-        List<Product> products = FileManager.readProduct();
+    public static void showAllProducts(List<Product> products) {
 
         for (Product product : products) {
             System.out.println(product);
@@ -142,8 +139,7 @@ public class Main {
 
         for (Product product : products) {
 
-            if (product.getName()
-                    .toLowerCase()
+            if (product.getName().toLowerCase()
                     .contains(name.toLowerCase())) {
 
                 System.out.println(product);
@@ -152,8 +148,7 @@ public class Main {
     }
 
     public static void searchProductsByPriceRange(
-            double minPrice,
-            double maxPrice) {
+            double minPrice, double maxPrice) {
 
         List<Product> products = FileManager.readProduct();
 

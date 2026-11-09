@@ -566,7 +566,7 @@ public class Main {
         System.out.println(GREEN +
                 "                HAVE A GREAT DAY!");
 
-        System.out.println();
+        System.out.println( );
 
         System.out.println(LINE + RESET);
 

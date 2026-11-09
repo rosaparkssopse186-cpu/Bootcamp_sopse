@@ -1,64 +1,107 @@
 package org.example;
 
 import java.io.*;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class FileManager {
-    public static List<Product> readProduct(){
+
+    private static final Path INVENTORY_FILE =
+            Paths.get("src/main/resources/Inventory");
+
+    public static List<Product> readProduct() {
+
         List<Product> productList = new ArrayList<>();
-        try{
-            FileReader fileReader = new FileReader("src/main/resources/Inventory.csv");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        try (BufferedReader bufferedReader =
+                     Files.newBufferedReader(INVENTORY_FILE)) {
 
             String itemRow;
-            bufferedReader.readLine();
-            while((itemRow = bufferedReader.readLine()) != null){
-                String [] rowSplitter = itemRow.split("\\|");
 
+            while ((itemRow = bufferedReader.readLine()) != null) {
 
-                String sKU = rowSplitter[0];
-                String productName = rowSplitter[1];
-                double price = Double.parseDouble(rowSplitter[2]);
-                String department = rowSplitter[3];
+                if (itemRow.trim().isEmpty()
+                        || itemRow.toLowerCase().startsWith("sku|")) {
+                    continue;
+                }
 
-                Product product = new Product(sKU, productName,price,department);
+                String[] rowSplitter = itemRow.split("\\|", -1);
+
+                if (rowSplitter.length != 4) {
+                    System.out.println("Invalid inventory row: " + itemRow);
+                    continue;
+                }
+
+                String sku = rowSplitter[0].trim();
+                String productName = rowSplitter[1].trim();
+                double price = Double.parseDouble(rowSplitter[2].trim());
+                String department = rowSplitter[3].trim();
+
+                Product product = new Product(
+                        sku, productName, price, department
+                );
+
                 productList.add(product);
             }
 
-        }
-        catch(IOException ex){
-            System.out.println("Could not read the file. Check the file. try again.");
-            //ex.printStackTrace();
-        }
-        catch(Exception ex){
-            System.out.println("Could not read data from the file. try again.");
-            //ex.printStackTrace();
+        } catch (IOException ex) {
+
+            System.out.println("Could not find or read Inventory.csv.");
+            System.out.println("File location: "
+                    + INVENTORY_FILE.toAbsolutePath());
+
+        } catch (NumberFormatException ex) {
+
+            System.out.println("Invalid price in Inventory.csv: "
+                    + ex.getMessage());
         }
 
         return productList;
     }
 
-    public static void writeInventory(Product product){
+    public static void writeInventory(Product product) {
 
-        try{
-            FileWriter fileWriter = new FileWriter("src/main/resources/Inventory.csv",true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        try {
 
-            String line = String.format("%d|%s|%s|%.2f|%s",product.getSku(),product.getName(),product.getPrice(), product.getDepartment());
+            Files.createDirectories(INVENTORY_FILE.getParent());
 
-            bufferedWriter.newLine();
-            bufferedWriter.write(line);
+            boolean needsHeader = !Files.exists(INVENTORY_FILE)
+                    || Files.size(INVENTORY_FILE) == 0;
 
-            System.out.println("Item added to Inventory.");
-            bufferedWriter.close();
+            try (BufferedWriter bufferedWriter =
+                         Files.newBufferedWriter(
+                                 INVENTORY_FILE,
+                                 StandardOpenOption.CREATE,
+                                 StandardOpenOption.APPEND)) {
+
+                if (needsHeader) {
+                    bufferedWriter.write(
+                            "SKU|Name|Price|Department"
+                    );
+                    bufferedWriter.newLine();
+                }
+
+                String line = String.format(
+                        Locale.US,
+                        "%s|%s|%.2f|%s",
+                        product.getSku(),
+                        product.getName(),
+                        product.getPrice(),
+                        product.getDepartment()
+                );
+
+                bufferedWriter.write(line);
+                bufferedWriter.newLine();
+
+                System.out.println("Item added to Inventory.");
+            }
+
+        } catch (IOException ex) {
+
+            System.out.println("Could not write to Inventory.csv.");
+            ex.printStackTrace();
         }
-        catch(IOException ex){
-            System.out.println("Could not read the file. ");
-        }
-        catch(Exception ex){
-            System.out.println("Error when handling the data.");
-        }
-
     }
 }

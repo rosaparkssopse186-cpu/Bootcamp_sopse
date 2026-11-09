@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ShoppingCart {
 
-    public List<Product> cart = new ArrayList<>();
+    private List<Product> cart = new ArrayList<>();
 
     public void addToCart(Product product) {
         cart.add(product);
@@ -13,6 +13,10 @@ public class ShoppingCart {
 
     public void removeFromCart(Product product) {
         cart.remove(product);
+    }
+
+    public List<Product> getCart() {
+        return cart;
     }
 
     public double getCartTotal() {
@@ -37,6 +41,6 @@ public class ShoppingCart {
             System.out.println(product);
         }
 
-        System.out.println("Cart Total: $" + getCartTotal());
+        System.out.printf("Cart Total: $%.2f%n", getCartTotal());
     }
 }
