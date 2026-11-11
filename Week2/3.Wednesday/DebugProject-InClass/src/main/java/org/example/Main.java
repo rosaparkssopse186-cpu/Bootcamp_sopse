@@ -18,7 +18,7 @@ public class Main {
         double score3 = scanner.nextDouble();
         TestScore test3 = new TestScore(score3);
 
-        double average = (test1.getScore() + test2.getScore() + test3.getScore()) / 2;
+        double average = (test1.getScore() + test2.getScore() + test3.getScore()) / 3;
 
         System.out.println("The average score is: " + average);
 
