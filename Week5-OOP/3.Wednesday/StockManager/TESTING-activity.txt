@@ -1,0 +1,50 @@
+StockManager — Business Logic + Unit Testing
+
+Part 1: Map the business logic (no code yet)
+--------------------------------------------
+Imagine a stock system with Products and a StockManager.
+You can use any product names you like in your examples.
+
+1. What should happen when we add stock for a brand-new product?
+if we add shampo with a quantity of 10, then the stock should be 10
+
+2. What should happen when we add stock for a product already in inventory?
+
+The system should add the new quantity to the existing quantity instead of creating a duplicate product.
+
+3. Should we allow adding 0 or negative quantity? Why or why not?
+No. We should only allow quantities greater than 0 because adding zero or a negative number does not represent receiving new stock.
+
+4. What should happen when we remove stock and there is enough?
+The system should subtract the requested quantity from the existing stock and return true to indicate success.
+
+5. What should happen if the product is not in stock?
+The system should not remove anything and should return false because the product does not exist in the inventory.
+
+6. What should happen if we try to remove more than we have?
+The system should reject the request, leave the stock quantity unchanged, and return false because there isn't enough inventory.
+
+7. What should getStock return if the product does not exist?
+It should return -1 to indicate that the product could not be found in the inventory.
+
+For each answer, write:
+  - Inputs
+  - Expected result (true/false and/or final quantity)
+
+
+Part 2: Write the tests
+-----------------------
+Open StockManagerTest.java. Use your answers from Part 1 as test cases.
+
+Suggested tests:
+1. addStock — new product → returns true, getStock matches quantity
+2. addStock — existing product → quantities add together
+3. addStock — quantity 0 or negative → returns false, not added
+4. removeStock — enough stock → returns true, quantity decreases
+5. removeStock — missing product → returns false
+6. removeStock — not enough stock → returns false, quantity unchanged
+7. getStock — missing product → returns -1
+
+Optional stretch:
+- Remove the exact full quantity (ends at 0)
+- One scenario that mixes several add/remove calls
