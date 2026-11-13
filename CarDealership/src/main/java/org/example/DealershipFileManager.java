@@ -198,6 +198,15 @@ public class DealershipFileManager {
                 "W1NKM4HB0PU012345", 2023, "Mercedes-Benz",
                 "G550", "SUV", "White", 11000, 139995.00
         ));
+        dealership.addVehicle(new Vehicle(
+                "W1NKM4HB6PU678902", 2024, "Mercedes-Benz",
+                 "GLE350", "SUV", "Pink", 5000, 62995.00
+        ));
+
+        dealership.addVehicle(new Vehicle(
+                "W1N6G7GB5RA123456", 2024, "Mercedes-Benz",
+                "G550", "SUV", "Purple", 3500, 149995.00
+        ));
 
         return dealership;
     }
