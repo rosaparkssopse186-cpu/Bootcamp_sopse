@@ -1,62 +1,88 @@
-#  Pink Label Luxury Motors
-### An Exclusive Mercedes-Benz Dealership Inventory Management System
-*Pretty in Pink. Powerful in Every Drive.*
+# Mercedes-Benz Dealership Inventory System
 
-## Project Overview
+## Project Description
 
-Pink Label Luxury Motors is a Java-based inventory management application designed for a luxury Mercedes-Benz dealership.
+The Mercedes-Benz Dealership Inventory System is a Java-based application designed to help manage a luxury vehicle inventory. The application allows users to search, view, add, and remove vehicles through a simple menu-driven interface.
 
-The application provides a simple, menu-driven system that allows dealership employees to efficiently manage Mercedes-Benz vehicle inventory. Users can search for vehicles by price, make, model, year, color, mileage, and vehicle type. The system also allows users to add new vehicles, remove existing vehicles, and view the dealership's complete inventory.
+The goal of this project was to strengthen my understanding of Java programming, object-oriented programming, classes, methods, collections, and file handling while developing a functional dealership management system.
 
-The dealership combines the elegance and prestige of the Mercedes-Benz brand with a distinctive pink luxury identity.
+## Features
 
-The primary goal of this project was to develop a functional dealership inventory management system while strengthening my understanding of Java programming, object-oriented programming, file handling, methods, and collections.
-
-## Dealership Features
-
-- Search Mercedes-Benz vehicles by price.
+- Search vehicles by price.
 - Search vehicles by make or model.
-- Filter vehicles by year.
-- Search vehicles by exterior color.
-- Filter vehicles by mileage.
-- Search by vehicle type.
-- View the complete Mercedes-Benz inventory.
-- Add new vehicles to the dealership inventory.
-- Remove vehicles using their VIN.
-- Save inventory changes to a file.
-
-## Vehicle Inventory
-
-The system manages vehicle information, including:
-
-- Vehicle Identification Number (VIN)
-- Year
-- Make
-- Model
-- Vehicle Type
-- Exterior Color
-- Mileage
-- Price
-
-## Dealership Branding
-
-**Pink Label Luxury Motors** is designed around a sophisticated pink, white, and silver color scheme inspired by luxury and elegance.
-
-**Brand Slogans:**
-- Pretty in Pink. Powerful in Every Drive.
-- Where Luxury Meets Confidence.
-- Luxury Has No Lane. Drive Yours. ♡
+- Search vehicles by year.
+- Search vehicles by color.
+- Search vehicles by mileage.
+- Search vehicles by vehicle type.
+- View all vehicles in the inventory.
+- Add new vehicles to the inventory.
+- Remove existing vehicles using the VIN.
+- Prevent duplicate vehicle entries.
+- Validate user input.
+- Save inventory changes using file handling.
 
 ## Technologies Used
 
 - Java
 - IntelliJ IDEA
 - Object-Oriented Programming (OOP)
-- ArrayList and List Collections
-- Scanner for User Input
+- ArrayLists and Collections
+- Java Scanner
 - File Handling
-- ANSI Escape Codes for Terminal Styling
+- CSV Inventory File
 
-## Learning Objectives
+## Project Structure
 
-Through this project, I developed practical experience with Java classes, methods, object-oriented programming, inventory management, search functionality, file handling, and input validation.
+The project is organized into separate classes to keep the code organized and easier to maintain.
+
+- **Main.java** – Starts the application.
+- **Vehicle.java** – Represents individual vehicles and stores vehicle information.
+- **Dealership.java** – Manages the vehicle inventory and search operations.
+- **DealershipFileManager.java** – Loads and saves dealership inventory data.
+- **UserInterface.java** – Displays the menu, collects user input, and handles user interactions.
+
+## Inventory Storage
+
+Vehicle information is stored in a CSV file. The application uses file handling to load inventory data when it starts and save updates when vehicles are added or removed.
+
+Each vehicle record contains information such as:
+
+- VIN
+- Year
+- Make
+- Model
+- Vehicle Type
+- Color
+- Mileage
+- Price
+
+## How to Run
+
+1. Open the project in IntelliJ IDEA.
+2. Make sure Java 17 or a compatible version is configured.
+3. Locate the `Main.java` file.
+4. Run the `Main` class.
+5. Follow the menu options to manage the dealership inventory.
+
+## What I Learned
+
+Through this project, I strengthened my understanding of Java programming and learned how different classes work together to build an application.
+
+I gained practical experience with:
+
+- Creating and organizing Java classes.
+- Applying object-oriented programming principles.
+- Using methods to perform specific tasks.
+- Working with ArrayLists and collections.
+- Using loops and conditional statements.
+- Handling user input and validating information.
+- Reading from and writing to files.
+- Debugging and solving programming challenges.
+
+## Dealership Branding
+
+**Mercedes-Benz Luxury Motors**
+
+*Engineered for Excellence.*
+
+**The Best or Nothing.**
