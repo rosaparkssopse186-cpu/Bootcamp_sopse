@@ -1,5 +1,4 @@
 
-
 package org.example;
 
 import java.util.List;
@@ -11,12 +10,14 @@ public class UserInterface {
     private final DealershipFileManager fileManager;
     private final Scanner scanner;
 
-    // Luxury Pink Color Palette
+    // Soft Neutral Pastel Color Palette
     private static final String RESET = "\u001B[0m";
-    private static final String PINK = "\u001B[38;5;213m";
-    private static final String HOT_PINK = "\u001B[38;5;205m";
-    private static final String WHITE = "\u001B[97m";
-    private static final String SILVER = "\u001B[38;5;250m";
+    private static final String CHAMPAGNE = "\u001B[38;5;223m";
+    private static final String SAGE = "\u001B[38;5;151m";
+    private static final String LAVENDER = "\u001B[38;5;183m";
+    private static final String TEAL = "\u001B[38;5;152m";
+    private static final String IVORY = "\u001B[38;5;230m";
+    private static final String TAUPE = "\u001B[38;5;180m";
     private static final String BOLD = "\u001B[1m";
 
     // Constructor
@@ -43,7 +44,7 @@ public class UserInterface {
             displayMenu();
 
             int choice = readInt(
-                    PINK + "\n  Enter your selection: " + RESET
+                    CHAMPAGNE + "\nEnter your selection: " + RESET
             );
 
             switch (choice) {
@@ -87,17 +88,17 @@ public class UserInterface {
                 case 0:
                     running = false;
 
-                    System.out.println(HOT_PINK + BOLD +
-                            "\n  Thank you for visiting Pink Label Luxury Motors!"
+                    System.out.println(LAVENDER + BOLD +
+                            "\nThank you for visiting Mercedes-Benz!"
                             + RESET);
 
-                    System.out.println(WHITE +
-                            "  Where Luxury Meets Confidence. ♡" + RESET);
+                    System.out.println(TAUPE +
+                            "The Best or Nothing." + RESET);
                     break;
 
                 default:
-                    System.out.println(HOT_PINK +
-                            "\n  Invalid selection. Please try again."
+                    System.out.println(LAVENDER +
+                            "\nInvalid selection. Please try again."
                             + RESET);
             }
         }
@@ -106,86 +107,95 @@ public class UserInterface {
     // Welcome Screen
     private void displayWelcomeScreen() {
 
-        System.out.println(PINK + BOLD);
         System.out.println();
-        System.out.println("  ==================================================");
-        System.out.println("                                                    ");
-        System.out.println("              MERCEDES-BENZ                         ");
-        System.out.println("                                                    ");
-        System.out.println("           PINK LABEL LUXURY MOTORS                 ");
-        System.out.println("                                                    ");
-        System.out.println("       Pretty in Pink. Powerful in Every Drive.     ");
-        System.out.println("                                                    ");
-        System.out.println("  ==================================================");
-        System.out.println(RESET);
 
-        System.out.println(HOT_PINK + BOLD +
-                "       Welcome to " + dealership.getName() + RESET);
+        System.out.println(CHAMPAGNE + BOLD +
+                "          MERCEDES-BENZ" + RESET);
 
-        System.out.println(WHITE +
-                "       " + dealership.getAddress());
+        System.out.println(TAUPE +
+                "          LUXURY MOTORS" + RESET);
 
-        System.out.println(
-                "       Phone: " + dealership.getPhone() + RESET
-        );
+        System.out.println(SAGE +
+                "       Engineered for Excellence" + RESET);
 
-        System.out.println(PINK +
-                "\n       Where Luxury Meets Confidence. ♡" + RESET);
+        System.out.println();
 
-        System.out.println(HOT_PINK +
-                "       Luxury Has No Lane. Drive Yours. ♡" + RESET);
+        System.out.println(CHAMPAGNE + BOLD +
+                "Welcome to " + dealership.getName() + RESET);
+
+        System.out.println(IVORY +
+                dealership.getAddress() + RESET);
+
+        System.out.println(IVORY +
+                "Phone: " + dealership.getPhone() + RESET);
+
+        System.out.println(LAVENDER +
+                "\nThe Best or Nothing." + RESET);
+
+        System.out.println();
     }
 
     // Display Main Menu
     private void displayMenu() {
 
-        System.out.println(PINK + BOLD);
         System.out.println();
-        System.out.println("  ╔════════════════════════════════════════════╗");
-        System.out.println("  ║                                            ║");
-        System.out.println("  ║          PINK LABEL LUXURY                 ║");
-        System.out.println("  ║             MAIN MENU                      ║");
-        System.out.println("  ║                                            ║");
-        System.out.println("  ╠════════════════════════════════════════════╣");
 
-        System.out.println(WHITE);
-        System.out.println("  ║                                            ║");
-        System.out.println("  ║   1.  Find Vehicles by Price               ║");
-        System.out.println("  ║   2.  Find Vehicles by Make / Model        ║");
-        System.out.println("  ║   3.  Find Vehicles by Year                ║");
-        System.out.println("  ║   4.  Find Vehicles by Color               ║");
-        System.out.println("  ║   5.  Find Vehicles by Mileage             ║");
-        System.out.println("  ║   6.  Find Vehicles by Type                ║");
-        System.out.println("  ║   7.  View All Luxury Vehicles             ║");
-        System.out.println("  ║   8.  Add a Vehicle                        ║");
-        System.out.println("  ║   9.  Remove a Vehicle                     ║");
-        System.out.println("  ║                                            ║");
+        System.out.println(CHAMPAGNE + BOLD +
+                "       MERCEDES-BENZ MAIN MENU" + RESET);
 
-        System.out.println(PINK + BOLD);
-        System.out.println("  ║   0.  Exit Dealership                      ║");
-        System.out.println("  ║                                            ║");
-        System.out.println("  ╠════════════════════════════════════════════╣");
-        System.out.println("  ║                                            ║");
-        System.out.println("  ║     WHERE LUXURY MEETS CONFIDENCE          ║");
-        System.out.println("  ║                                            ║");
-        System.out.println("  ╚════════════════════════════════════════════╝");
+        System.out.println();
 
-        System.out.println(RESET);
+        System.out.println(TEAL +
+                "1.  Find Vehicles by Price" + RESET);
+
+        System.out.println(SAGE +
+                "2.  Find Vehicles by Make / Model" + RESET);
+
+        System.out.println(LAVENDER +
+                "3.  Find Vehicles by Year" + RESET);
+
+        System.out.println(CHAMPAGNE +
+                "4.  Find Vehicles by Color" + RESET);
+
+        System.out.println(TEAL +
+                "5.  Find Vehicles by Mileage" + RESET);
+
+        System.out.println(SAGE +
+                "6.  Find Vehicles by Type" + RESET);
+
+        System.out.println(LAVENDER +
+                "7.  List All Vehicles" + RESET);
+
+        System.out.println(CHAMPAGNE +
+                "8.  Add a Vehicle" + RESET);
+
+        System.out.println(TEAL +
+                "9.  Remove a Vehicle" + RESET);
+
+        System.out.println();
+
+        System.out.println(TAUPE +
+                "0.  Exit Dealership" + RESET);
+
+        System.out.println();
+
+        System.out.println(CHAMPAGNE + BOLD +
+                "       THE BEST OR NOTHING." + RESET);
     }
 
     // Display Vehicle Inventory
     private void displayVehicles(List<Vehicle> vehicles) {
 
         if (vehicles == null || vehicles.isEmpty()) {
-            System.out.println(HOT_PINK +
-                    "\n  No vehicles found." + RESET);
+            System.out.println(LAVENDER +
+                    "\nNo vehicles found." + RESET);
             return;
         }
 
-        System.out.println(PINK + BOLD);
-        System.out.println(
-                "\n  =============== PINK LABEL INVENTORY ==============="
-        );
+        System.out.println();
+
+        System.out.println(CHAMPAGNE + BOLD +
+                "MERCEDES-BENZ INVENTORY" + RESET);
 
         System.out.printf(
                 "%-18s | %-5s | %-13s | %-10s | %-6s | %-10s | %-8s | %14s%n",
@@ -193,30 +203,30 @@ public class UserInterface {
                 "COLOR", "MILEAGE", "PRICE"
         );
 
-        System.out.println(SILVER +
+        System.out.println(TAUPE +
                 "--------------------------------------------------------------------------"
                 + "--------------------------------" + RESET);
 
         for (Vehicle vehicle : vehicles) {
-            System.out.println(WHITE + vehicle + RESET);
+            System.out.println(IVORY + vehicle + RESET);
         }
 
-        System.out.println(PINK + BOLD +
-                "\n  Total vehicles found: " + vehicles.size() + RESET);
+        System.out.println(SAGE + BOLD +
+                "\nTotal vehicles found: " + vehicles.size() + RESET);
     }
 
     // 1. Search Vehicles by Price
     private void processGetVehiclesByPriceRequest() {
 
-        System.out.println(PINK +
-                "\n  --- SEARCH BY PRICE ---" + RESET);
+        System.out.println(CHAMPAGNE +
+                "\n--- SEARCH BY PRICE ---" + RESET);
 
-        double minPrice = readDouble("  Minimum price: $");
-        double maxPrice = readDouble("  Maximum price: $");
+        double minPrice = readDouble("Minimum price: $");
+        double maxPrice = readDouble("Maximum price: $");
 
         if (minPrice < 0 || maxPrice < minPrice) {
-            System.out.println(HOT_PINK +
-                    "  Invalid price range." + RESET);
+            System.out.println(LAVENDER +
+                    "Invalid price range." + RESET);
             return;
         }
 
@@ -229,10 +239,10 @@ public class UserInterface {
     // 2. Search Vehicles by Make or Model
     private void processGetVehiclesByMakeModelRequest() {
 
-        System.out.println(PINK +
-                "\n  --- SEARCH BY MAKE / MODEL ---" + RESET);
+        System.out.println(CHAMPAGNE +
+                "\n--- SEARCH BY MAKE / MODEL ---" + RESET);
 
-        String search = readText("  Enter make or model: ");
+        String search = readText("Enter make or model: ");
 
         List<Vehicle> vehicles =
                 dealership.getVehiclesByMakeModel(search);
@@ -243,15 +253,15 @@ public class UserInterface {
     // 3. Search Vehicles by Year
     private void processGetVehiclesByYearRequest() {
 
-        System.out.println(PINK +
-                "\n  --- SEARCH BY YEAR ---" + RESET);
+        System.out.println(CHAMPAGNE +
+                "\n--- SEARCH BY YEAR ---" + RESET);
 
-        int minYear = readInt("  Starting year: ");
-        int maxYear = readInt("  Ending year: ");
+        int minYear = readInt("Starting year: ");
+        int maxYear = readInt("Ending year: ");
 
         if (minYear > maxYear) {
-            System.out.println(HOT_PINK +
-                    "  Invalid year range." + RESET);
+            System.out.println(LAVENDER +
+                    "Invalid year range." + RESET);
             return;
         }
 
@@ -264,10 +274,10 @@ public class UserInterface {
     // 4. Search Vehicles by Color
     private void processGetVehiclesByColorRequest() {
 
-        System.out.println(PINK +
-                "\n  --- SEARCH BY COLOR ---" + RESET);
+        System.out.println(CHAMPAGNE +
+                "\n--- SEARCH BY COLOR ---" + RESET);
 
-        String color = readText("  Enter vehicle color: ");
+        String color = readText("Enter vehicle color: ");
 
         List<Vehicle> vehicles =
                 dealership.getVehiclesByColor(color);
@@ -278,15 +288,15 @@ public class UserInterface {
     // 5. Search Vehicles by Mileage
     private void processGetVehiclesByMileageRequest() {
 
-        System.out.println(PINK +
-                "\n  --- SEARCH BY MILEAGE ---" + RESET);
+        System.out.println(CHAMPAGNE +
+                "\n--- SEARCH BY MILEAGE ---" + RESET);
 
-        int minMileage = readInt("  Minimum mileage: ");
-        int maxMileage = readInt("  Maximum mileage: ");
+        int minMileage = readInt("Minimum mileage: ");
+        int maxMileage = readInt("Maximum mileage: ");
 
         if (minMileage < 0 || maxMileage < minMileage) {
-            System.out.println(HOT_PINK +
-                    "  Invalid mileage range." + RESET);
+            System.out.println(LAVENDER +
+                    "Invalid mileage range." + RESET);
             return;
         }
 
@@ -299,13 +309,13 @@ public class UserInterface {
     // 6. Search Vehicles by Type
     private void processGetVehiclesByTypeRequest() {
 
-        System.out.println(PINK +
-                "\n  --- SEARCH BY VEHICLE TYPE ---" + RESET);
+        System.out.println(CHAMPAGNE +
+                "\n--- SEARCH BY VEHICLE TYPE ---" + RESET);
 
-        System.out.println(WHITE +
-                "  Available types: car, truck, SUV, van" + RESET);
+        System.out.println(IVORY +
+                "Available types: car, truck, SUV, van" + RESET);
 
-        String type = readText("  Enter vehicle type: ");
+        String type = readText("Enter vehicle type: ");
 
         List<Vehicle> vehicles =
                 dealership.getVehiclesByType(type);
@@ -316,8 +326,8 @@ public class UserInterface {
     // 7. Display All Vehicles
     private void processGetAllVehiclesRequest() {
 
-        System.out.println(PINK +
-                "\n  --- ALL LUXURY VEHICLES ---" + RESET);
+        System.out.println(CHAMPAGNE +
+                "\n--- ALL MERCEDES-BENZ VEHICLES ---" + RESET);
 
         List<Vehicle> vehicles = dealership.getAllVehicles();
 
@@ -327,30 +337,30 @@ public class UserInterface {
     // 8. Add a Vehicle
     private void processAddVehicleRequest() {
 
-        System.out.println(PINK +
-                "\n  --- ADD A LUXURY VEHICLE ---" + RESET);
+        System.out.println(CHAMPAGNE +
+                "\n--- ADD A VEHICLE ---" + RESET);
 
-        String vin = readText("  Enter VIN: ");
+        String vin = readText("Enter VIN: ");
 
         if (dealership.getVehicleByVin(vin) != null) {
-            System.out.println(HOT_PINK +
-                    "  A vehicle with this VIN already exists." + RESET);
+            System.out.println(LAVENDER +
+                    "A vehicle with this VIN already exists." + RESET);
             return;
         }
 
-        int year = readInt("  Enter year: ");
-        String make = readText("  Enter make (Mercedes-Benz): ");
-        String model = readText("  Enter model (C300, GLE350, G63, etc.): ");
-        String type = readText("  Enter type (car, truck, SUV, van): ");
-        String color = readText("  Enter color: ");
-        int mileage = readInt("  Enter mileage: ");
-        double price = readDouble("  Enter price: $");
+        int year = readInt("Enter year: ");
+        String make = readText("Enter make (Mercedes-Benz): ");
+        String model = readText("Enter model (C300, GLE350, G63, etc.): ");
+        String type = readText("Enter type (car, truck, SUV, van): ");
+        String color = readText("Enter color: ");
+        int mileage = readInt("Enter mileage: ");
+        double price = readDouble("Enter price: $");
 
         if (year < 1886 || year > 2100 ||
                 mileage < 0 || price < 0) {
 
-            System.out.println(HOT_PINK +
-                    "  Invalid vehicle information." + RESET);
+            System.out.println(LAVENDER +
+                    "Invalid vehicle information." + RESET);
             return;
         }
 
@@ -362,36 +372,35 @@ public class UserInterface {
 
         fileManager.saveDealership(dealership);
 
-        System.out.println(PINK + BOLD +
-                "\n  Vehicle successfully added to Pink Label Luxury!"
-                + RESET);
+        System.out.println(SAGE + BOLD +
+                "\nVehicle successfully added!" + RESET);
 
-        System.out.println(WHITE + vehicle + RESET);
+        System.out.println(IVORY + vehicle + RESET);
     }
 
     // 9. Remove a Vehicle
     private void processRemoveVehicleRequest() {
 
-        System.out.println(PINK +
-                "\n  --- REMOVE A VEHICLE ---" + RESET);
+        System.out.println(CHAMPAGNE +
+                "\n--- REMOVE A VEHICLE ---" + RESET);
 
-        String vin = readText("  Enter VIN of vehicle to remove: ");
+        String vin = readText("Enter VIN of vehicle to remove: ");
 
         Vehicle vehicle = dealership.getVehicleByVin(vin);
 
         if (vehicle == null) {
-            System.out.println(HOT_PINK +
-                    "  Vehicle not found." + RESET);
+            System.out.println(LAVENDER +
+                    "Vehicle not found." + RESET);
             return;
         }
 
-        System.out.println(PINK +
-                "\n  Vehicle selected:" + RESET);
+        System.out.println(CHAMPAGNE +
+                "\nVehicle selected:" + RESET);
 
-        System.out.println(WHITE + vehicle + RESET);
+        System.out.println(IVORY + vehicle + RESET);
 
         String confirmation = readText(
-                "  Are you sure you want to remove this vehicle? (Y/N): "
+                "Are you sure you want to remove this vehicle? (Y/N): "
         );
 
         if (confirmation.equalsIgnoreCase("Y")) {
@@ -400,19 +409,19 @@ public class UserInterface {
 
             fileManager.saveDealership(dealership);
 
-            System.out.println(PINK +
-                    "\n  Vehicle successfully removed." + RESET);
+            System.out.println(SAGE +
+                    "\nVehicle successfully removed." + RESET);
 
         } else {
-            System.out.println(WHITE +
-                    "  Removal cancelled." + RESET);
+            System.out.println(TAUPE +
+                    "Removal cancelled." + RESET);
         }
     }
 
     // Read Text Safely
     private String readText(String message) {
 
-        System.out.print(PINK + message + RESET);
+        System.out.print(CHAMPAGNE + message + RESET);
 
         return scanner.nextLine().trim();
     }
@@ -422,18 +431,17 @@ public class UserInterface {
 
         while (true) {
 
-            System.out.print(PINK + message + RESET);
+            System.out.print(CHAMPAGNE + message + RESET);
 
             try {
                 return Integer.parseInt(scanner.nextLine().trim());
 
             } catch (NumberFormatException e) {
 
-                System.out.println(HOT_PINK +
-                        "  Please enter a valid whole number." + RESET);
+                System.out.println(LAVENDER +
+                        "Please enter a valid whole number." + RESET);
             }
         }
-
     }
 
     // Read Decimal Safely
@@ -441,15 +449,15 @@ public class UserInterface {
 
         while (true) {
 
-            System.out.print(PINK + message + RESET);
+            System.out.print(CHAMPAGNE + message + RESET);
 
             try {
                 return Double.parseDouble(scanner.nextLine().trim());
 
             } catch (NumberFormatException e) {
 
-                System.out.println(HOT_PINK +
-                        "  Please enter a valid number." + RESET);
+                System.out.println(LAVENDER +
+                        "Please enter a valid number." + RESET);
             }
         }
     }
