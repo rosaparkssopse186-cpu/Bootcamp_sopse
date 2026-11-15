@@ -20,7 +20,7 @@ public class UserInterface {
     private static final String TAUPE = "\u001B[38;5;180m";
     private static final String BOLD = "\u001B[1m";
 
-    // Constructor
+    // Constructor initializes the FileManager and Scanner.
     public UserInterface() {
         this.fileManager = new DealershipFileManager();
         this.scanner = new Scanner(System.in);
