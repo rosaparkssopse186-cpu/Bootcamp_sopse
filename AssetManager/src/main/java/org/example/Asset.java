@@ -2,7 +2,7 @@ package org.example;
 
 import java.math.BigDecimal;
 
-public class Asset {
+public abstract class Asset {
 
     private String description;
     private String dateAcquired;
@@ -37,4 +37,6 @@ public class Asset {
     public void setOriginalCost(BigDecimal originalCost) {
         this.originalCost = originalCost;
     }
+
+    public abstract BigDecimal getValue();
 }
