@@ -56,3 +56,27 @@ public class Main {
         myAssets.add(myCar);
         myAssets.add(tomTruck);
 
+        // Display all assets
+        for (Asset asset : myAssets) {
+
+            String message = "";
+
+            if (asset instanceof House) {
+                House house = (House) asset;
+                message = "House Address: " + house.getAddress();
+
+            } else if (asset instanceof Vehicle) {
+                Vehicle vehicle = (Vehicle) asset;
+                message = "Vehicle: " + vehicle.getYear() + " "
+                        + vehicle.getMakeModel();
+            }
+
+            System.out.println("--------------------------------");
+            System.out.println("Description: " + asset.getDescription());
+            System.out.println("Date Acquired: " + asset.getDateAcquired());
+            System.out.println("Original Cost: $" + asset.getOriginalCost());
+            System.out.println("Current Value: $" + asset.getValue());
+            System.out.println(message);
+        }
+    }
+}

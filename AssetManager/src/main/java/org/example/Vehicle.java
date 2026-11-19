@@ -14,7 +14,6 @@ public class Vehicle extends Asset {
                    String makeModel, int year, int odometer) {
 
         super(description, dateAcquired, originalCost);
-
         this.makeModel = makeModel;
         this.year = year;
         this.odometer = odometer;
