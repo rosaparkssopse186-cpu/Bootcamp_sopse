@@ -1,14 +1,13 @@
+
 package org.example;
 
 public class SalesContract extends Contract {
 
-    // Sales contract information
     private double salesTaxAmount;
     private double recordingFee;
     private double processingFee;
     private boolean financeOption;
 
-    // Constructor
     public SalesContract(String date, String customerName,
                          String customerEmail, Vehicle vehicleSold,
                          boolean financeOption) {
@@ -27,7 +26,7 @@ public class SalesContract extends Contract {
         this.financeOption = financeOption;
     }
 
-    // Getters and Setters
+    // Getters and setters
 
     public double getSalesTaxAmount() {
         return salesTaxAmount;
@@ -61,17 +60,40 @@ public class SalesContract extends Contract {
         this.financeOption = financeOption;
     }
 
-    // Calculate total price
+    // Calculate total sales price
+
     @Override
     public double getTotalPrice() {
-
         return getVehicleSold().getPrice()
                 + salesTaxAmount
                 + recordingFee
                 + processingFee;
     }
 
+    // Get annual interest rate based on vehicle price
+
+    private double getInterestRate() {
+
+        if (getVehicleSold().getPrice() >= 10000) {
+            return 0.0425;
+        } else {
+            return 0.0525;
+        }
+    }
+
+    // Get loan term based on vehicle price
+
+    private int getLoanTerm() {
+
+        if (getVehicleSold().getPrice() >= 10000) {
+            return 48;
+        } else {
+            return 24;
+        }
+    }
+
     // Calculate monthly payment
+
     @Override
     public double getMonthlyPayment() {
 
@@ -79,18 +101,8 @@ public class SalesContract extends Contract {
             return 0.0;
         }
 
-        double interestRate;
-        int loanTerm;
-
-        if (getVehicleSold().getPrice() >= 10000) {
-            interestRate = 0.0425;
-            loanTerm = 48;
-        } else {
-            interestRate = 0.0525;
-            loanTerm = 24;
-        }
-
-        double monthlyRate = interestRate / 12;
+        double monthlyRate = getInterestRate() / 12;
+        int loanTerm = getLoanTerm();
         double principal = getTotalPrice();
 
         return principal * monthlyRate
