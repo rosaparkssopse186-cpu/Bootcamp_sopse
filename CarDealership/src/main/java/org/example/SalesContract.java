@@ -14,9 +14,13 @@ public class SalesContract extends Contract {
 
         super(date, customerName, customerEmail, vehicleSold);
 
+        // Calculate sales tax at 5%
         this.salesTaxAmount = vehicleSold.getPrice() * 0.05;
+
+        // Set recording fee
         this.recordingFee = 100.00;
 
+        // Set processing fee based on vehicle price
         if (vehicleSold.getPrice() < 10000) {
             this.processingFee = 295.00;
         } else {
@@ -60,7 +64,7 @@ public class SalesContract extends Contract {
         this.financeOption = financeOption;
     }
 
-    // Calculate total sales price
+    // Calculate total price of the vehicle and fees
 
     @Override
     public double getTotalPrice() {
@@ -70,41 +74,34 @@ public class SalesContract extends Contract {
                 + processingFee;
     }
 
-    // Get annual interest rate based on vehicle price
-
-    private double getInterestRate() {
-
-        if (getVehicleSold().getPrice() >= 10000) {
-            return 0.0425;
-        } else {
-            return 0.0525;
-        }
-    }
-
-    // Get loan term based on vehicle price
-
-    private int getLoanTerm() {
-
-        if (getVehicleSold().getPrice() >= 10000) {
-            return 48;
-        } else {
-            return 24;
-        }
-    }
-
     // Calculate monthly payment
 
     @Override
     public double getMonthlyPayment() {
 
+        // Return 0 if the customer does not finance
         if (!financeOption) {
             return 0.0;
         }
 
-        double monthlyRate = getInterestRate() / 12;
-        int loanTerm = getLoanTerm();
+        double interestRate;
+        int loanTerm;
+
+        // Choose interest rate and loan term based on vehicle price
+        if (getVehicleSold().getPrice() >= 10000) {
+            interestRate = 0.0425;
+            loanTerm = 48;
+        } else {
+            interestRate = 0.0525;
+            loanTerm = 24;
+        }
+
+        // Convert annual interest rate to monthly interest rate
+        double monthlyRate = interestRate / 12;
+
         double principal = getTotalPrice();
 
+        // Calculate monthly loan payment
         return principal * monthlyRate
                 / (1 - Math.pow(1 + monthlyRate, -loanTerm));
     }
